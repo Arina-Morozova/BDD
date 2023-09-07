@@ -12,10 +12,9 @@ import static com.codeborne.selenide.Condition.visible;
 
 public class TransferPage {
 
-    private final SelenideElement transferButton = $("[data-test-id=action-deposit]");
     private final SelenideElement amountInput = $("[data-test-id=amount] input");
     private final SelenideElement fromInput = $("[data-test-id=from] input");
-    private final SelenideElement transferButton2 = $("[data-test-id=action-transfer]");
+    private final SelenideElement transferButton = $("[data-test-id=action-transfer]");
     private final SelenideElement transferHead = $(byText("Пополнение карты"));
     private final SelenideElement cancelButton = $("[data-test-id=action-cancel]");
     private final SelenideElement errorMassage = $("[data-test-id=error-notification]");
@@ -30,10 +29,9 @@ public class TransferPage {
     }
 
     public void makeTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
-        transferButton.click();
         amountInput.setValue(amountToTransfer);
         fromInput.setValue(cardInfo.getCardNumber());
-        transferButton2.click();
+        transferButton.click();
     }
 
     public void findErrorMessage(String expectedText) {

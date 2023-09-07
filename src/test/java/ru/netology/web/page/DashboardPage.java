@@ -13,18 +13,13 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
     private ElementsCollection cards = $$(".list__item div");
-    private final String balanceStart = ", баланс: ";
-    private final String balanceFinish = " р. ";
+    private final String balanceStart = "баланс: ";
+    private final String balanceFinish = " р.";
     private SelenideElement heading = $("[data-test-id=dashboard]");
 
     public DashboardPage() {
         heading.shouldBe(visible);
     }
-
-//    public int getCardBalance(DataHelper.CardInfo cardInfo) {
-//        var text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
-//        return extractBalance(text);
-//    }
 
     public int getCardBalance(DataHelper.CardInfo cardInfo) {
         var text = cards.findBy(Condition.text(cardInfo.getCardNumber().substring(15))).getText();
